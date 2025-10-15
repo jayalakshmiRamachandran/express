@@ -65,13 +65,16 @@ app.put("/teas/:id", (req, res) => {
 
 // delete tea
 app.delete("/teas/:id", (req, res) => {
+  
   const index = teaData.findIndex((tea) => tea.id === parseInt(req.params.id));
+  
   if (index === -1) {
     return res.status(404).send("Tea not found");
   }
 
   teaData.splice(index, 1);
-  res.status(204).send("Deleted");
+  
+  res.status(200).send("Deleted");
 });
 
 app.listen(port, () => {
